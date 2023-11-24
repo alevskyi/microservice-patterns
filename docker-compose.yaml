@@ -1,0 +1,25 @@
+version: '3.6'
+services:
+  elasticsearch:
+    image: 'bitnami/elasticsearch:7.17.15'
+    ports:
+      - '9200:9200'
+
+  kibana:
+    image: 'bitnami/kibana:7.17.15'
+    environment:
+      KIBANA_ELASTICSEARCH_URL: 'elasticsearch'
+    ports:
+      - '5601:5601'
+
+  consul:
+    image: 'bitnami/consul:1.13.1'
+    ports:
+      - '8500:8500'
+      - '8600:8600/tcp'
+      - '8600:8600/udp'
+
+  zipkin:
+    image: 'openzipkin/zipkin:2.23.17'
+    ports:
+      - '9411:9411'
